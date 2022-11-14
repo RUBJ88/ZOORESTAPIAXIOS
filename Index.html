@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Animal, Vue3 + REST</title>
+    <style>
+        button {
+            margin: 5px 5px 5px 5px
+        }
+    </style>
+</head>
+<body>
+    <h1> Animal Posts, Vue3 + REST, BY RUNI</h1>
+
+    <div id="app">
+
+        <button class="btn btn-warning" v-on:click="cleanList">Clean the list</button>
+        <br>
+        <button class="btn btn-primary" v-on:click="getByCarId(getAnimalId)">Get By AnimalId</button>
+        <input v-model="getAnimalId" placeholder="User Id" type="number">
+        <br>
+        <button class="btn btn-primary" v-on:click="getAllAnimal">Get All</button>
+        <br>
+        <button class="btn btn-primary" v-on:click="PostAnimal">Add</button>
+        <br>
+        <input v-model="AnimalId" placeholder="Animal Id" type="number">
+        <br>
+        <input v-model="AnimalNamer" placeholder="Animal Name" type="string">
+        <br>
+        <input v-model="AnimalSlags" placeholder="Animal Slags" type="string">
+        <br>
+        <input v-model="AnimalAge" placeholder="Animal Age" type="number">
+        <br>
+        <input v-model="AnimaGender" placeholder="AnimalGender" type="string">
+        <br>
+        <button class="btn btn-primary" v-on:click="deleteByAnimalId(deleteanimalId)">Delete car</button>
+        <br>
+        <input v-model="deleteanimalId" placeholder="deleteAnimal Id" type="number">
+        <br>
+
+        <div v-if="error" style="color: red">error: {{error}}</div>
+        <div style="color: green">Statuscode: {{statuscode}}</div>
+        <h1>animal List</h1>
+        <ul v-if="animalList.length > 0">
+            <li v-for="animal in animalslist" v-bind:key="animal.id">
+                name {{animal.name}}: {{animal.slags}} : id {{animal.id}}: gender{{animal.gender}}
+            </li>
+        </ul>       
+        <div v-else style="font-style: italic;">No Animals to show</div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
